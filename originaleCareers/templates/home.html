@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+     <link rel="stylesheet" href="home.css" crossorigin="anonymous" 0>
+     <title>Originale|Careers</title>
+    <style type="text/css"> 
+ /*table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+  /*color: #fff;*/
+/*  background: #fff;
+  text-align: center;
+
+  border-radius: 10px;
+}*/
+
+/*table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+
+/*th, td {
+  padding: 10px;
+}*/
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  /*width: 100%;*/
+  margin-left: 200px;
+  margin-right: 150px;
+  background: #fff;
+
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+
+}
+
+
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: gray;
+  color: white;
+}
+body {
+ background: linear-gradient(to bottom, #FFD700 0%,#FFD700 100%);
+  opacity:0.95;
+  background-image: url("media/honey4k.jpg");
+   
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+   background-position: center;
+ 
+   height: 100%;
+}
+h2 {
+  text-align: center;
+  color: #fff;
+}
+
+
+</style>
+</head>
+
+<body>
+    <!-- <div class="page"> -->
+    <script>
+        function func1(e) {
+            console.log(e.getElementsByTagName("input")[0])
+            e.getElementsByTagName("input")[0].click();
+
+        }
+    </script>
+
+  <!--   <div class="box1">
+    <h2>ORIGINALE CAREERS</h2>
+    <span>kjsadck bcjxv </span>
+</div> -->
+
+    {% include 'navbar.html' %}
+
+    <form action="{% url 'userJobForm' %}" method="POST">
+        {% csrf_token %}
+            
+            <h2>VACANCIES</h2>
+            <!-- <div class="card-body"> -->
+                <table id="customers">
+                    <tr>
+
+                        <th>Position</th>
+                        <th>Description</th>
+                        <th>Salary</th>
+                        <th>Experience</th>
+                        <th>Location</th>
+                        <th>Join</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>
+                            {{i.position}}
+                        </td>
+                        <td>
+                            <p>{{i.description}}</p>
+                        </td>
+                        <td>
+                            {{i.salary}}
+                        </td>
+                        <td>
+                            {{i.experience}}
+                        </td>
+                        <td>
+                            {{i.location}}
+                        </td>
+                        <td class="btn btn-info btn-sm" style="width: 90px;height:40px;padding:7px;margin-top:3px;"
+                            onclick="func1(this)"><input style="display: none;" name="ate" class="btn btn-info btn-sm"
+                                value='{{i.position}}' type="submit">Apply</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+             <!-- </div> -->
+       <!--  </div>  -->
+
+    </form>
+
+
+
+<!-- </div> -->
+
+</body>
+
+</html>
