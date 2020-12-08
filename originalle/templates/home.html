@@ -1,0 +1,62 @@
+<body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" 0>
+    <script>
+        function func1(e) {
+            console.log(e.getElementsByTagName("input")[0])
+            e.getElementsByTagName("input")[0].click();
+
+        }
+    </script>
+
+    {% include 'navbar.html' %}
+
+    <form action="{% url 'userJobForm' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="container card">
+            <h1>Available openings</h1>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+
+                        <th>Position</th>
+                        <th>Description</th>
+                        <th>Salary</th>
+                        <th>Experience</th>
+                        <th>Location</th>
+                        <th>Join</th>
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td>
+                            {{i.jobtype}}
+                        </td>
+                        <td>
+                            <p>{{i.jobdescription}}</p>
+                        </td>
+                        <td>
+                            {{i.salary}}
+                        </td>
+                        <td>
+                            {{i.experince}}
+                        </td>
+                        <td>
+                            {{i.location}}
+                        </td>
+                        <td class="btn btn-info btn-sm" style="width: 90px;height:40px;padding:7px;margin-top:3px;"
+                            onclick="func1(this)"><input style="display: none;" name="ate" class="btn btn-info btn-sm"
+                                value='{{i.jobtype}}' type="submit">Apply</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+
+</body>
